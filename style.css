@@ -1,0 +1,79 @@
+
+body {
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 300px;
+	height: 250px;
+	margin: 10px;
+	border: 2px solid black;
+}
+
+.main-block {
+	width: 300px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+#block5 {
+	width: 300px;
+	height: 50px;
+	background-color: black;
+}
+#block4 {
+	width: 250px;
+	height: 50px;
+	background-color: black;
+}
+#block3 {
+	width: 200px;
+	height: 50px;
+	background-color: black;
+}
+#block2 {
+	width: 150px;
+	height: 50px;
+	background-color: black;
+}
+#block1 {
+	width: 100px;
+	height: 50px;
+	background-color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
