@@ -1,10 +1,23 @@
 
-let blocks = document.querySelectorAll('.main-block')
+/// Array of the 3 boxes
+let boxes = document.querySelectorAll('.box')
 
-let blockArray = []
+/// No blocks are selected
+let block = null
 
-for (let i = 0; i < blocks.length; i++) {
-	blockArray.push(blocks[i])
+/// Makes each box clickable
+for (let i = 0; i < boxes.length; i++) {
+	boxes[i].addEventListener('click', moveBlock)
+}
+
+/// Selects the top block in the selected box
+function moveBlock(event) {
+	if (block === null && (event.target === boxes[0].firstElementChild)) {
+		block = event.target
+		block.style.backgroundColor = 'gray'
+	} else {
+
+	}
 }
 
 
@@ -47,22 +60,6 @@ for (let i = 0; i < blocks.length; i++) {
 
 
 
-
-
-
-
-
-
-
-
-
-/// Draggable stuff
-
-// blockArray[0].addEventListener('mouseover', makeDraggable)
-// function makeDraggable() {
-// 	document.querySelector('.block').setAttribute('draggable', 'true')
-// 	stopDrag()
-// }
 
 
 
