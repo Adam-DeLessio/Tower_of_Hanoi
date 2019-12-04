@@ -12,26 +12,18 @@ for (let i = 0; i < boxes.length; i++) {
 
 /// Selects the top block in the selected box
 function moveBlock(event) {
-	if (block === null && (event.target === boxes[0].firstElementChild)) {
+	if (block === null && (event.target === boxes[0].firstElementChild || event.target === boxes[1].firstElementChild || event.target === boxes[2].firstElementChild)) {
 		block = event.target
 		block.style.backgroundColor = 'gray'
-	} else {
-
+	} else if (block !== null && (event.target === boxes[0] || event.target === boxes[1] || event.target === boxes[2])) {
+		event.target.appendChild(block)
+		block.style.backgroundColor = 'black'
+		block = null
 	}
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
