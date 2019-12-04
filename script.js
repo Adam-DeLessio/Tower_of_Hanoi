@@ -16,7 +16,8 @@ function moveBlock(event) {
 		block = event.target
 		block.style.backgroundColor = 'gray'
 	} else if (block !== null && (event.target === boxes[0] || event.target === boxes[1] || event.target === boxes[2])) {
-		event.target.appendChild(block)
+		
+		event.target.insertBefore(block, event.target.firstElementChild)
 		block.style.backgroundColor = 'black'
 		block = null
 	}
