@@ -120,7 +120,7 @@ function compare() {
 /// Checks if all disks have been moved to the right-side box
 function checkWin() {
 	if ((box3.children.length === 4 && howMany === 4) || (box3.children.length === 5 && howMany === 5) || (box3.children.length === 6 && howMany === 6)) {
-		win.style.display = 'block'
+		win.style.display = 'flex'
 	} 
 }
 
