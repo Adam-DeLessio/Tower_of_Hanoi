@@ -1,4 +1,7 @@
 
+let counter = 0
+
+
 /// Makes array of the 3 boxes
 let box = document.querySelectorAll('.box')
 
@@ -37,12 +40,16 @@ function compare() {
 		block = null
 		newBox = null
 		newBoxvalue = null
+		counter++
+		document.querySelector('.counter').innerHTML = counter
 	} else if (newBoxvalue !== null && topValue > blockValue) {
 		newBox.insertBefore(block, newBox.firstElementChild)
 		block.style.backgroundColor = 'black'
 		block = null
 		newBox = null
 		newBoxvalue = null
+		counter++
+		document.querySelector('.counter').innerHTML = counter
 	} else if (newBoxvalue !== null && topValue === blockValue) {
 		block.style.backgroundColor = 'black'
 		block = null

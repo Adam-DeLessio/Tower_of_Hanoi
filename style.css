@@ -7,6 +7,7 @@ body {
 .container {
 	display: flex;
 	align-items: center;
+	background-color: green;
 }
 
 .box {
@@ -26,6 +27,8 @@ body {
 	display: flex;
 	justify-content: center;
 	border: none;
+	border-radius: 5px;
+
 }
 
 #block5 {
@@ -55,7 +58,16 @@ body {
 }
 
 
-
+.counter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	height: 30px;
+	background-color: blue;
+	color: red;
+	font-size: 30px;
+}
 
 
 
