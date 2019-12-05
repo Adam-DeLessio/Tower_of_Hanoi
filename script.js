@@ -22,6 +22,7 @@ let choose = document.querySelector('.choose')
 let easy = document.querySelector('#easy')
 let medium = document.querySelector('#medium')
 let hard = document.querySelector('#hard')
+let timed = document.querySelector('#timed')
 
 let box1 = document.querySelector('#box1')
 
@@ -31,6 +32,7 @@ function start() {
 	easy.addEventListener('click', easyBlocks)
 	medium.addEventListener('click', mediumBlocks)
 	hard.addEventListener('click', hardBlocks)
+	timed.addEventListener('click', timedBlocks)
 }
 
 function easyBlocks() {
@@ -46,6 +48,13 @@ function mediumBlocks() {
 function hardBlocks() {
 	choose.style.display = 'none'
 	howMany = 6
+	addBlocks()
+}
+function timedBlocks() {
+	choose.style.display = 'none'
+	howMany = 6
+	document.querySelector('#count-down').style.display = 'block'
+	countDown()
 	addBlocks()
 }
 
@@ -143,10 +152,29 @@ function resetGame() {
 
 	counter = 0
 	document.querySelector('#counter').innerHTML = counter
+	document.querySelector('#count-down').style.display = 'none'
+	win.style.display = 'none'
 	
 	choose.style.display = 'flex'
 }
 
+
+
+
+/// Timer
+let seconds = 60
+
+function countDown() {
+    function tick() {
+        let countDown = document.querySelector('#count-down')
+        seconds--
+        countDown.innerHTML = seconds
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000)
+        }
+    }
+    tick();
+}
 
 
 start()

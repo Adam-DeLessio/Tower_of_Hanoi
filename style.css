@@ -132,6 +132,11 @@ header {
 	background-color: blue;
 }
 
+.numbers {
+	display: flex;
+	flex-direction: row;
+}
+
 .extras {
 	display: flex;
 	flex-direction: column;
@@ -177,10 +182,14 @@ header {
 	border-radius: 10px;
 }
 
-
-
-
-
+#count-down {
+	display: none;
+	background-color: rgb(170,170,170);
+	margin: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	color: white;
+}
 
 
 
