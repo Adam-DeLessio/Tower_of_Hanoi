@@ -1,13 +1,14 @@
 
 let counter = 0
 
-let win = document.querySelector('h2')
+let win = document.querySelector('#win')
 
 /// Makes array of the 3 boxes
 let box = document.querySelectorAll('.box')
 let box3 = document.querySelector('#box3')
 
 let block = null
+let blockColor = null
 let newBox = null
 let newBoxvalue = null
 let blockValue = null
@@ -22,6 +23,7 @@ for (let i = 0; i < box.length; i++) {
 function moveBlock(event) {
 	if (block === null && (event.target === box[0].firstElementChild || event.target === box[1].firstElementChild || event.target === box[2].firstElementChild)) {
 		block = event.target
+		blockColor = block.style.backgroundColor
 		block.style.backgroundColor = 'gray'
 		blockValue = event.target.getAttribute('data-value')
 	} else if (block !== null && (event.target === box[0] || event.target === box[1] || event.target === box[2])) {
@@ -38,7 +40,7 @@ function moveBlock(event) {
 function compare() {
 	if (newBoxvalue === null) {
 		newBox.appendChild(block)
-		block.style.backgroundColor = 'black'
+		block.style.backgroundColor = blockColor
 		block = null
 		newBox = null
 		newBoxvalue = null
@@ -46,7 +48,7 @@ function compare() {
 		document.querySelector('.counter').innerHTML = counter
 	} else if (newBoxvalue !== null && topValue > blockValue) {
 		newBox.insertBefore(block, newBox.firstElementChild)
-		block.style.backgroundColor = 'black'
+		block.style.backgroundColor = blockColor
 		checkWin()
 		block = null
 		newBox = null
@@ -54,18 +56,19 @@ function compare() {
 		counter++
 		document.querySelector('.counter').innerHTML = counter
 	} else if (newBoxvalue !== null && topValue === blockValue) {
-		block.style.backgroundColor = 'black'
+		block.style.backgroundColor = blockColor
 		block = null
 		newBox = null
 		newBoxvalue = null
 	} else if (newBoxvalue !== null && topValue < blockValue) {
-		block.style.backgroundColor = 'black'
+		block.style.backgroundColor = blockColor
 		block = null
 		newBox = null
 		newBoxvalue = null
 	}
 }
 
+/// Checks if all disks have been moved to the right-side box
 function checkWin() {
 	if (box3.children.length === 5) {
 		win.style.display = 'block'
