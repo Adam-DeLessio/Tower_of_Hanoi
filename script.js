@@ -1,18 +1,92 @@
 
+/// Move counter
 let counter = 0
-
-let win = document.querySelector('#win')
 
 /// Makes array of the 3 boxes
 let box = document.querySelectorAll('.box')
-let box3 = document.querySelector('#box3')
 
+/// Determines win
+let box3 = document.querySelector('#box3')
+let win = document.querySelector('#win')
+
+/// Changeable variables
 let block = null
 let blockColor = null
 let newBox = null
 let newBoxvalue = null
 let blockValue = null
 let topValue = null
+
+
+
+
+/////////
+let choose = document.querySelector('.choose')
+let easy = document.querySelector('#easy')
+let medium = document.querySelector('#medium')
+let hard = document.querySelector('#hard')
+
+let box1 = document.querySelector('#box1')
+
+let howMany = null
+
+function start() {
+	easy.addEventListener('click', easyBlocks)
+	medium.addEventListener('click', mediumBlocks)
+	hard.addEventListener('click', hardBlocks)
+}
+
+function easyBlocks() {
+	choose.style.display = 'none'
+	howMany = 4
+	addBlocks()
+}
+function mediumBlocks() {
+	choose.style.display = 'none'
+	howMany = 5
+	addBlocks()
+}
+function hardBlocks() {
+	choose.style.display = 'none'
+	howMany = 6
+	addBlocks()
+}
+
+function addBlocks() {
+	for (let i = 1; i <= howMany; i++) {
+		let div = document.createElement('div')
+		div.setAttribute('id', 'block' + i)
+		div.setAttribute('data-value', i)
+		div.style.backgroundColor = 'black'
+		div.style.height = '50px'
+		div.style.width = (i * 50) + 'px'
+		div.style.borderRadius = '5px'
+		div.style.margin = '1px'
+		box1.appendChild(div)
+	}
+}
+
+
+
+// let medium = 5
+// let hard = 6
+// let impossible = 64
+
+// let youPick = 10
+
+
+
+
+
+
+
+
+
+
+
+
+///////////
+
 
 /// Makes each box clickable
 for (let i = 0; i < box.length; i++) {
@@ -37,6 +111,7 @@ function moveBlock(event) {
 	}
 }
 
+/// Checks validity of move
 function compare() {
 	if (newBoxvalue === null) {
 		newBox.appendChild(block)
@@ -74,6 +149,26 @@ function checkWin() {
 		win.style.display = 'block'
 	} 
 }
+
+
+
+start()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
