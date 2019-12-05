@@ -17,10 +17,7 @@ let newBoxvalue = null
 let blockValue = null
 let topValue = null
 
-
-
-
-/////////
+/// Choose how many blocks
 let choose = document.querySelector('.choose')
 let easy = document.querySelector('#easy')
 let medium = document.querySelector('#medium')
@@ -57,7 +54,6 @@ function addBlocks() {
 		let div = document.createElement('div')
 		div.setAttribute('id', 'block' + i)
 		div.setAttribute('data-value', i)
-		div.style.backgroundColor = 'black'
 		div.style.height = '50px'
 		div.style.width = (i * 50) + 'px'
 		div.style.borderRadius = '5px'
@@ -65,28 +61,6 @@ function addBlocks() {
 		box1.appendChild(div)
 	}
 }
-
-
-
-// let medium = 5
-// let hard = 6
-// let impossible = 64
-
-// let youPick = 10
-
-
-
-
-
-
-
-
-
-
-
-
-///////////
-
 
 /// Makes each box clickable
 for (let i = 0; i < box.length; i++) {
@@ -120,7 +94,7 @@ function compare() {
 		newBox = null
 		newBoxvalue = null
 		counter++
-		document.querySelector('.counter').innerHTML = counter
+		document.querySelector('#counter').innerHTML = counter
 	} else if (newBoxvalue !== null && topValue > blockValue) {
 		newBox.insertBefore(block, newBox.firstElementChild)
 		block.style.backgroundColor = blockColor
@@ -129,7 +103,7 @@ function compare() {
 		newBox = null
 		newBoxvalue = null
 		counter++
-		document.querySelector('.counter').innerHTML = counter
+		document.querySelector('#counter').innerHTML = counter
 	} else if (newBoxvalue !== null && topValue === blockValue) {
 		block.style.backgroundColor = blockColor
 		block = null
@@ -145,7 +119,7 @@ function compare() {
 
 /// Checks if all disks have been moved to the right-side box
 function checkWin() {
-	if (box3.children.length === 5) {
+	if ((box3.children.length === 4 && howMany === 4) || (box3.children.length === 5 && howMany === 5) || (box3.children.length === 6 && howMany === 6)) {
 		win.style.display = 'block'
 	} 
 }
