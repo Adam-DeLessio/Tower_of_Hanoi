@@ -124,6 +124,29 @@ function checkWin() {
 	} 
 }
 
+/// Reset
+let box2 = document.querySelector('#box2')
+let reset = document.querySelector('.reset')
+
+reset.addEventListener('click', resetGame)
+
+function resetGame() {
+	while (box1.firstElementChild) {
+		box1.removeChild(box1.firstElementChild)
+	}
+	while (box2.firstElementChild) {
+		box2.removeChild(box2.firstElementChild)
+	}
+	while (box3.firstElementChild) {
+		box3.removeChild(box3.firstElementChild)
+	}
+
+	counter = 0
+	document.querySelector('#counter').innerHTML = counter
+	
+	choose.style.display = 'flex'
+}
+
 
 
 start()
