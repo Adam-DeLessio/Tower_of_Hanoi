@@ -1,9 +1,11 @@
 
 let counter = 0
 
+let win = document.querySelector('h2')
 
 /// Makes array of the 3 boxes
 let box = document.querySelectorAll('.box')
+let box3 = document.querySelector('#box3')
 
 let block = null
 let newBox = null
@@ -45,6 +47,7 @@ function compare() {
 	} else if (newBoxvalue !== null && topValue > blockValue) {
 		newBox.insertBefore(block, newBox.firstElementChild)
 		block.style.backgroundColor = 'black'
+		checkWin()
 		block = null
 		newBox = null
 		newBoxvalue = null
@@ -63,8 +66,11 @@ function compare() {
 	}
 }
 
-
-
+function checkWin() {
+	if (box3.children.length === 5) {
+		win.style.display = 'block'
+	} 
+}
 
 
 
