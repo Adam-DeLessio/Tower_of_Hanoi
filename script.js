@@ -22,12 +22,14 @@ let box1 = document.querySelector('#box1')
 let box2 = document.querySelector('#box2')
 let reset = document.querySelector('.reset')
 let extras = document.querySelector('.extras')
+let timer = document.querySelector('#timer')
 
 reset.style.display = 'none'
 extras.style.display = 'none'
 box1.style.display = 'none'
 box2.style.display = 'none'
 box3.style.display = 'none'
+timer.style.display = 'none'
 
 
 /// Choose how many blocks
@@ -36,10 +38,6 @@ let easy = document.querySelector('#easy')
 let medium = document.querySelector('#medium')
 let hard = document.querySelector('#hard')
 let timed = document.querySelector('#timed')
-
-
-
-
 let howMany = null
 
 function start() {
@@ -67,7 +65,7 @@ function hardBlocks() {
 function timedBlocks() {
 	choose.style.display = 'none'
 	howMany = 6
-	document.querySelector('#count-down').style.display = 'block'
+	timer.style.display = 'block'
 	countDown()
 	addBlocks()
 }
@@ -149,12 +147,14 @@ function compare() {
 function checkWin() {
 	if ((box3.children.length === 4 && howMany === 4) || (box3.children.length === 5 && howMany === 5) || (box3.children.length === 6 && howMany === 6)) {
 		win.style.display = 'flex'
+		// box1.style.display = 'none'
+		// box2.style.display = 'none'
+		// box3.style.display = 'none'
+		// extras.style.display = 'none'
 	} 
 }
 
 /// Reset
-
-
 reset.addEventListener('click', resetGame)
 
 function resetGame() {
@@ -170,7 +170,7 @@ function resetGame() {
 
 	counter = 0
 	document.querySelector('#counter').innerHTML = counter
-	document.querySelector('#count-down').style.display = 'none'
+	timer.style.display = 'none'
 	win.style.display = 'none'
 	reset.style.display = 'none'
 	extras.style.display = 'none'
@@ -179,6 +179,8 @@ function resetGame() {
 	box3.style.display = 'none'
 	
 	choose.style.display = 'flex'
+
+	stopTimer()
 }
 
 
@@ -187,17 +189,27 @@ function resetGame() {
 /// Timer
 let seconds = 60
 
+let myTimer;
+
 function countDown() {
     function tick() {
-        let countDown = document.querySelector('#count-down')
         seconds--
-        countDown.innerHTML = seconds
+        timer.innerHTML = seconds
         if( seconds > 0 ) {
-            setTimeout(tick, 1000)
+            myTimer = setTimeout(tick, 1000)
         }
     }
     tick();
 }
+
+/// Reset Timer
+function stopTimer() {
+	clearTimeout(myTimer)
+	seconds = 60
+}
+
+
+
 
 
 start()
