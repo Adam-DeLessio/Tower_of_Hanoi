@@ -17,6 +17,19 @@ let newBoxvalue = null
 let blockValue = null
 let topValue = null
 
+/// Effects starting appearance
+let box1 = document.querySelector('#box1')
+let box2 = document.querySelector('#box2')
+let reset = document.querySelector('.reset')
+let extras = document.querySelector('.extras')
+
+reset.style.display = 'none'
+extras.style.display = 'none'
+box1.style.display = 'none'
+box2.style.display = 'none'
+box3.style.display = 'none'
+
+
 /// Choose how many blocks
 let choose = document.querySelector('.choose')
 let easy = document.querySelector('#easy')
@@ -24,7 +37,8 @@ let medium = document.querySelector('#medium')
 let hard = document.querySelector('#hard')
 let timed = document.querySelector('#timed')
 
-let box1 = document.querySelector('#box1')
+
+
 
 let howMany = null
 
@@ -69,6 +83,11 @@ function addBlocks() {
 		div.style.margin = '1px'
 		box1.appendChild(div)
 	}
+	reset.style.display = 'flex'
+	extras.style.display = 'flex'
+	box1.style.display = 'flex'
+	box2.style.display = 'flex'
+	box3.style.display = 'flex'
 }
 
 /// Makes each box clickable
@@ -134,8 +153,7 @@ function checkWin() {
 }
 
 /// Reset
-let box2 = document.querySelector('#box2')
-let reset = document.querySelector('.reset')
+
 
 reset.addEventListener('click', resetGame)
 
@@ -154,6 +172,11 @@ function resetGame() {
 	document.querySelector('#counter').innerHTML = counter
 	document.querySelector('#count-down').style.display = 'none'
 	win.style.display = 'none'
+	reset.style.display = 'none'
+	extras.style.display = 'none'
+	box1.style.display = 'none'
+	box2.style.display = 'none'
+	box3.style.display = 'none'
 	
 	choose.style.display = 'flex'
 }
