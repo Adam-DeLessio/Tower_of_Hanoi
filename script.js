@@ -186,6 +186,7 @@ function resetGame() {
 	timer.style.display = 'none'
 	timer.style.visibility = 'hidden'
 	win.style.display = 'none'
+	fail.style.display = 'none'
 	reset.style.display = 'none'
 	extras.style.display = 'none'
 	box1.style.display = 'none'
@@ -193,7 +194,6 @@ function resetGame() {
 	box3.style.display = 'none'
 	games.style.display = 'none'
 	choose.style.display = 'flex'
-
 
 	resetTimer()
 }
@@ -237,8 +237,8 @@ function winTimed() {
 
 /// Fail timed run
 function endGame() {
-	win.innerHTML = 'YOU FAIL.'
-	win.style.display = 'flex'
+	let fail = document.querySelector('#fail')
+	fail.style.display = 'flex'
 
 	box1.style.visibility = 'hidden'
 	box2.style.visibility = 'hidden'
