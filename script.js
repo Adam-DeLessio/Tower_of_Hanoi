@@ -34,6 +34,7 @@ box2.style.display = 'none'
 box3.style.display = 'none'
 timer.style.display = 'none'
 games.style.display = 'none'
+timer.style.visibility = 'hidden'
 
 
 /// Choose how many blocks
@@ -53,6 +54,7 @@ function start() {
 
 function easyBlocks() {
 	choose.style.display = 'none'
+	// timer.style.visibility = 'hidden'
 	howMany = 4
 	addBlocks()
 }
@@ -69,7 +71,7 @@ function hardBlocks() {
 function timedBlocks() {
 	choose.style.display = 'none'
 	howMany = 6
-	timer.style.display = 'block'
+	timer.style.visibility = 'visible'
 	countDown()
 	addBlocks()
 }
@@ -91,6 +93,7 @@ function addBlocks() {
 	box2.style.display = 'flex'
 	box3.style.display = 'flex'
 	games.style.display = 'flex'
+	timer.style.display = 'flex'
 
 	box1.style.visibility = 'visible'
 	box2.style.visibility = 'visible'
@@ -181,6 +184,7 @@ function resetGame() {
 	counter = 0
 	document.querySelector('#counter').innerHTML = counter
 	timer.style.display = 'none'
+	timer.style.visibility = 'hidden'
 	win.style.display = 'none'
 	reset.style.display = 'none'
 	extras.style.display = 'none'

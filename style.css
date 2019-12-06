@@ -135,9 +135,10 @@ header {
 .numbers {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	width: 80%;
+	width: 70%;
+	margin-top: 20px;
 }
 
 .games {
@@ -177,11 +178,14 @@ header {
 
 #timer {
 	/*visibility: hidden;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background-color: rgb(170,170,170);
 	border-radius: 10px;
 	width: 100px;
 	height: 100px;
-
+	font-size: 30px;
 	color: white;
 }
 
@@ -197,7 +201,7 @@ header {
 
 .reset {
 	background-color: rgb(170,170,170);
-	margin: 10px;
+	margin: 15px;
 	padding: 10px;
 	border-radius: 10px;
 	color: white;
