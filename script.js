@@ -86,6 +86,10 @@ function addBlocks() {
 	box1.style.display = 'flex'
 	box2.style.display = 'flex'
 	box3.style.display = 'flex'
+
+	box1.style.visibility = 'visible'
+	box2.style.visibility = 'visible'
+	box3.style.visibility = 'visible'
 }
 
 /// Makes each box clickable
@@ -147,10 +151,9 @@ function compare() {
 function checkWin() {
 	if ((box3.children.length === 4 && howMany === 4) || (box3.children.length === 5 && howMany === 5) || (box3.children.length === 6 && howMany === 6)) {
 		win.style.display = 'flex'
-		// box1.style.display = 'none'
-		// box2.style.display = 'none'
-		// box3.style.display = 'none'
-		// extras.style.display = 'none'
+		box1.style.visibility = 'hidden'
+		box2.style.visibility = 'hidden'
+		box3.style.visibility = 'hidden'
 	} 
 }
 
@@ -180,11 +183,8 @@ function resetGame() {
 	
 	choose.style.display = 'flex'
 
-	stopTimer()
+	resetTimer()
 }
-
-
-
 
 /// Timer
 let seconds = 60
@@ -195,19 +195,30 @@ function countDown() {
     function tick() {
         seconds--
         timer.innerHTML = seconds
-        if( seconds > 0 ) {
+        if (seconds > 0) {
             myTimer = setTimeout(tick, 1000)
+        } else if (seconds === 0) {
+        	endGame()
         }
     }
     tick();
 }
 
 /// Reset Timer
-function stopTimer() {
+function resetTimer() {
 	clearTimeout(myTimer)
 	seconds = 60
 }
 
+
+function endGame() {
+	win.innerHTML = 'YOU FAIL.'
+	win.style.display = 'flex'
+
+	box1.style.visibility = 'hidden'
+	box2.style.visibility = 'hidden'
+	box3.style.visibility = 'hidden'
+}
 
 
 
