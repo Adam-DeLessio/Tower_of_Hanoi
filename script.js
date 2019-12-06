@@ -187,7 +187,7 @@ function resetGame() {
 }
 
 /// Timer
-let seconds = 60
+let seconds = 61
 
 let myTimer;
 
@@ -197,6 +197,8 @@ function countDown() {
         timer.innerHTML = seconds
         if (seconds > 0) {
             myTimer = setTimeout(tick, 1000)
+        } else if (box3.children.length === 6 && howMany === 6) {
+        	winTimed()
         } else if (seconds === 0) {
         	endGame()
         }
@@ -207,10 +209,20 @@ function countDown() {
 /// Reset Timer
 function resetTimer() {
 	clearTimeout(myTimer)
-	seconds = 60
+	seconds = 61
 }
 
+/// Win timed run
+function winTimed() {
+	win.style.display = 'flex'
+	box1.style.visibility = 'hidden'
+	box2.style.visibility = 'hidden'
+	box3.style.visibility = 'hidden'
+	timer.innerHTML = seconds
+	clearTimeout(myTimer)
+}
 
+/// Fail timed run
 function endGame() {
 	win.innerHTML = 'YOU FAIL.'
 	win.style.display = 'flex'
