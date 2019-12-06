@@ -23,6 +23,9 @@ let box2 = document.querySelector('#box2')
 let reset = document.querySelector('.reset')
 let extras = document.querySelector('.extras')
 let timer = document.querySelector('#timer')
+let games = document.querySelector('.games')
+let gameCounter = 0
+let wonGames = document.querySelector('#wonGames')
 
 reset.style.display = 'none'
 extras.style.display = 'none'
@@ -30,6 +33,7 @@ box1.style.display = 'none'
 box2.style.display = 'none'
 box3.style.display = 'none'
 timer.style.display = 'none'
+games.style.display = 'none'
 
 
 /// Choose how many blocks
@@ -86,6 +90,7 @@ function addBlocks() {
 	box1.style.display = 'flex'
 	box2.style.display = 'flex'
 	box3.style.display = 'flex'
+	games.style.display = 'flex'
 
 	box1.style.visibility = 'visible'
 	box2.style.visibility = 'visible'
@@ -151,6 +156,8 @@ function compare() {
 function checkWin() {
 	if ((box3.children.length === 4 && howMany === 4) || (box3.children.length === 5 && howMany === 5) || (box3.children.length === 6 && howMany === 6)) {
 		win.style.display = 'flex'
+		gameCounter++
+		wonGames.innerHTML = gameCounter
 		box1.style.visibility = 'hidden'
 		box2.style.visibility = 'hidden'
 		box3.style.visibility = 'hidden'
@@ -180,15 +187,15 @@ function resetGame() {
 	box1.style.display = 'none'
 	box2.style.display = 'none'
 	box3.style.display = 'none'
-	
+	games.style.display = 'none'
 	choose.style.display = 'flex'
+
 
 	resetTimer()
 }
 
 /// Timer
 let seconds = 61
-
 let myTimer;
 
 function countDown() {
@@ -219,6 +226,8 @@ function winTimed() {
 	box2.style.visibility = 'hidden'
 	box3.style.visibility = 'hidden'
 	timer.innerHTML = seconds
+	gameCounter++
+	wonGames.innerHTML = gameCounter
 	clearTimeout(myTimer)
 }
 
