@@ -4,9 +4,9 @@
 - Move all of the blocks from the box on the left to the box on the right.
 
 ### Rules
-- Only one disk can be moved at a time
-- No disk can be put on top of a smaller disk
-- You can only move the top disk
+- Only one block can be moved at a time
+- No block can be put on top of a smaller block
+- You can only move the top block
 
 ### Gameplay Instructions
 - The player must click directly on the block they choose to move.
