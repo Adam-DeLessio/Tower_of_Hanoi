@@ -107,53 +107,35 @@ box.forEach(box => {
 	box.setAttribute('ondrop', 'drop(event)')
 })
 
-function drag(event) {
-	event.dataTransfer.setData('text/data-value')
-}
-
 function allowDrop(event) {
 	event.preventDefault()
 }
 
 function drop(event) {
 	event.preventDefault()
-	let data = event.dataTransfer.getData('text')
-	let newBlock = document.getElementById(data)
-	let block = newBlock.getAttribute('data-value')
+	let dataValue = event.dataTransfer.getData('dataValue')
+	let id = event.dataTransfer.getData('id')
 	if (event.target.lastElementChild === null) {
-		event.target.appendChild(document.getElementById(data))
+		event.target.appendChild(document.getElementById(id))
 	} else if (event.target.lastElementChild !== null) {
-		let dataValue = event.target.lastElementChild.getAttribute('data-value')
-		if (dataValue > block) {
-			// event.target.appendChild(document.getElementById(data))
-			event.target.insertBefore(document.getElementById(data), event.target.firstElementChild.nextSibling)
+		let lastValue = event.target.firstElementChild.getAttribute('data-value')
+		if (lastValue > dataValue) {
+			event.target.insertBefore(document.getElementById(id), event.target.firstElementChild)
 		} else {
 			event.preventDefault()
 		}
-		// event.target.appendChild(document.getElementById(data))
-		// console.log(event.target.lastElementChild.getAttribute('data-value'))
-		
-		
 	}	
 }
 
 /// Selects the top block in the selected box
 function moveBlock(event) {
 	if (event.target === box[0].firstElementChild || event.target === box[1].firstElementChild || event.target === box[2].firstElementChild) {
-		event.dataTransfer.setData('text', event.target.id)
-		blockValue = event.target.getAttribute('data-value')
+		dataValue = event.target.getAttribute('data-value')
+		event.dataTransfer.setData('dataValue', dataValue)
+		event.dataTransfer.setData('id', event.target.id)
 	} else {
 		event.preventDefault()
 	}
-	// } else if (block !== null && (event.target === box[0] || event.target === box[1] || event.target === box[2])) {
-	// 	newBox = event.target
-	// 	newBoxvalue = event.target.firstElementChild
-
-	// 	if (event.target.children.length > 0) {
-	// 		topValue = event.target.firstElementChild.getAttribute('data-value')
-	// 	}
-	// 	compare()
-	// }
 }
 
 /// Checks validity of move
