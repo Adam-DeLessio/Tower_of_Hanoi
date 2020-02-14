@@ -9,8 +9,7 @@
 - You can only move the top block
 
 ### Gameplay Instructions
-- The player must click directly on the block they choose to move.
-- Clicking in any of the boxes will de-select a choosen block and move it if able.
+- The player must click and drag the block they wish to move.
 - If a block does not move, the move counter will not change.
 - Clicking Reset will **not** reset the Win counter.
 
