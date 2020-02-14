@@ -35,7 +35,6 @@ timer.style.display = 'none'
 games.style.display = 'none'
 timer.style.visibility = 'hidden'
 
-
 /// Choose how many blocks
 let choose = document.querySelector('.choose')
 let easy = document.querySelector('#easy')
@@ -77,6 +76,7 @@ function timedBlocks() {
 function addBlocks() {
 	for (let i = 1; i <= howMany; i++) {
 		let div = document.createElement('div')
+		div.setAttribute('class', 'block')
 		div.setAttribute('id', 'block' + i)
 		div.setAttribute('data-value', i)
 
@@ -115,12 +115,17 @@ function drop(event) {
 	event.preventDefault()
 	let dataValue = event.dataTransfer.getData('dataValue')
 	let id = event.dataTransfer.getData('id')
-	if (event.target.lastElementChild === null) {
+	if (event.target.lastElementChild === null && event.target.getAttribute('class') !== 'block') {
 		event.target.appendChild(document.getElementById(id))
+		counter++
+		document.querySelector('#counter').innerHTML = counter
 	} else if (event.target.lastElementChild !== null) {
 		let lastValue = event.target.firstElementChild.getAttribute('data-value')
 		if (lastValue > dataValue) {
 			event.target.insertBefore(document.getElementById(id), event.target.firstElementChild)
+			checkWin()
+			counter++
+			document.querySelector('#counter').innerHTML = counter
 		} else {
 			event.preventDefault()
 		}
@@ -135,38 +140,6 @@ function moveBlock(event) {
 		event.dataTransfer.setData('id', event.target.id)
 	} else {
 		event.preventDefault()
-	}
-}
-
-/// Checks validity of move
-function compare(event) {
-	if (newBoxvalue === null) {
-		newBox.appendChild(block)
-		block.style.backgroundColor = blockColor
-		block = null
-		newBox = null
-		newBoxvalue = null
-		counter++
-		document.querySelector('#counter').innerHTML = counter
-	} else if (newBoxvalue !== null && topValue > blockValue) {
-		newBox.insertBefore(block, newBox.firstElementChild)
-		block.style.backgroundColor = blockColor
-		checkWin()
-		block = null
-		newBox = null
-		newBoxvalue = null
-		counter++
-		document.querySelector('#counter').innerHTML = counter
-	} else if (newBoxvalue !== null && topValue === blockValue) {
-		block.style.backgroundColor = blockColor
-		block = null
-		newBox = null
-		newBoxvalue = null
-	} else if (newBoxvalue !== null && topValue < blockValue) {
-		block.style.backgroundColor = blockColor
-		block = null
-		newBox = null
-		newBoxvalue = null
 	}
 }
 
@@ -261,34 +234,4 @@ function endGame() {
 }
 
 
-
-
 start()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
